@@ -1,0 +1,42 @@
+# Simple CI/CD Pipeline for Beginners
+name: My First Pipeline
+
+# When to run this pipeline
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# What to do
+jobs:
+  build:
+    # Use Ubuntu Linux
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Get the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Step 2: Say hello
+      - name: Say Hello
+        run: echo "Hello! Pipeline is running!"
+      
+      # Step 3: Show the date
+      - name: Show current date
+        run: date
+      
+      # Step 4: List files
+      - name: List all files
+        run: ls -la
+      
+      # Step 5: Run a simple script
+      - name: Run calculation
+        run: |
+          echo "Let me calculate 10 + 20"
+          echo "Result: $((10 + 20))"
+      
+      # Step 6: Success message
+      - name: Success!
+        run: echo "✅ Pipeline completed successfully!"
